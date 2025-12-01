@@ -1,161 +1,411 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Weekly Strategic Roundtable – E-Magazine</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <style>
-        body {
-            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-            margin: 0;
-            background: #f4f5f7;
-            color: #222;
-            line-height: 1.6;
-        }
-        header {
-            background: #ffffff;
-            border-bottom: 3px solid #0b7a32;
-            padding: 1rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        header img {
-            height: 70px;
-            width: auto;
-        }
-        .title-block h1 {
-            margin: 0;
-            font-size: 1.6rem;
-            letter-spacing: 0.03em;
-        }
-        .title-block p {
-            margin: 0.1rem 0;
-            font-size: 0.9rem;
-            color: #555;
-        }
-        nav {
-            background: #0b7a32;
-            color: #fff;
-            padding: 0.4rem 1.5rem;
-            font-size: 0.9rem;
-        }
-        nav a {
-            color: #fff;
-            margin-right: 1.2rem;
-            text-decoration: none;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        main {
-            max-width: 960px;
-            margin: 1.5rem auto 3rem auto;
-            background: #fff;
-            padding: 1.5rem;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.06);
-        }
-        h2 {
-            margin-top: 1.5rem;
-            border-bottom: 2px solid #0b7a32;
-            padding-bottom: 0.3rem;
-            font-size: 1.2rem;
-        }
-        .meta {
-            font-size: 0.85rem;
-            color: #666;
-        }
-        footer {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #777;
-            padding: 1rem 0 2rem;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Weekly Strategic Roundtable (WSR) – Research & Journal E-Magazine</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* --- Basic Reset --- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      background: #f5f7fa;
+      color: #222;
+    }
+
+    a { color: #0b6b3a; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* --- Layout helpers --- */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* --- Top Bar / Header --- */
+    header {
+      background: #ffffff;
+      border-bottom: 3px solid #0b6b3a;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      font-size: 0.85rem;
+    }
+
+    .tagline {
+      color: #555;
+    }
+
+    /* --- Nav --- */
+    nav {
+      background: #0b6b3a;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    nav li { margin-right: 1.5rem; }
+
+    nav a {
+      display: block;
+      padding: 0.7rem 0;
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: none;
+      border-bottom: 2px solid #fff;
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      background: #ffffff;
+      padding: 2.5rem 0 2rem;
+      border-bottom: 1px solid #dde2ea;
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-logo {
+      flex: 0 0 130px;
+    }
+
+    .hero-logo img {
+      max-width: 130px;
+      height: auto;
+      display: block;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .hero-text h1 {
+      font-size: 1.9rem;
+      color: #0b6b3a;
+      margin-bottom: 0.4rem;
+    }
+
+    .hero-sub {
+      font-size: 0.95rem;
+      color: #444;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-meta {
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .label-chip {
+      display: inline-block;
+      background: #e5f3ea;
+      color: #0b6b3a;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-right: 0.5rem;
+    }
+
+    /* --- Sections --- */
+    section {
+      padding: 2.2rem 0;
+    }
+
+    section:nth-of-type(odd) {
+      background: #f5f7fa;
+    }
+
+    section:nth-of-type(even) {
+      background: #ffffff;
+    }
+
+    h2.section-title {
+      font-size: 1.3rem;
+      color: #0b6b3a;
+      margin-bottom: 0.8rem;
+      border-left: 4px solid #0b6b3a;
+      padding-left: 0.6rem;
+    }
+
+    .muted {
+      color: #777;
+      font-size: 0.92rem;
+    }
+
+    /* --- Current Issue block --- */
+    .issue-meta {
+      font-size: 0.88rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+
+    .issue-card {
+      border: 1px solid #d7dde7;
+      border-left: 4px solid #0b6b3a;
+      background: #ffffff;
+      padding: 1rem 1.2rem;
+      margin-top: 0.6rem;
+      border-radius: 4px;
+    }
+
+    .issue-card h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.4rem;
+    }
+
+    /* --- Two-column layouts --- */
+    .two-col {
+      display: grid;
+      grid-template-columns: 2fr 1.3fr;
+      gap: 2rem;
+    }
+
+    @media (max-width: 800px) {
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+      nav ul {
+        padding: 0.3rem 0;
+      }
+      .hero-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* --- Lists --- */
+    ul.clean-list {
+      list-style: none;
+      margin-top: 0.5rem;
+    }
+
+    ul.clean-list li {
+      margin-bottom: 0.35rem;
+      padding-left: 1.1rem;
+      position: relative;
+    }
+
+    ul.clean-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #0b6b3a;
+    }
+
+    /* --- Contact --- */
+    .contact-item {
+      margin-bottom: 0.3rem;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.8rem;
+      padding: 1rem 0 1.4rem;
+      color: #777;
+    }
+  </style>
 </head>
 <body>
-
-<header>
-    <!-- Your logo file is in the same folder as index.html -->
-    <img src="logo.jpg" alt="Weekly Strategic Roundtable logo">
-    <div class="title-block">
-        <h1>Weekly Strategic Roundtable (WSR)</h1>
-        <p>Research & Journal E-Magazine | Started 12 August 2024</p>
-        <p class="meta">An academic initiative on defence, geopolitics & strategic affairs</p>
+  <!-- Header + Nav -->
+  <header>
+    <div class="container top-bar">
+      <div>
+        <span class="label-chip">WSR</span>
+        <span class="tagline">Research & Journal E-Magazine on Defence, Geopolitics & Strategic Affairs</span>
+      </div>
+      <div class="tagline">
+        Started <strong>12 August 2024</strong>
+      </div>
     </div>
-</header>
+    <nav>
+      <div class="container">
+        <ul>
+          <li><a href="#about">About WSR</a></li>
+          <li><a href="#issue">Current Issue</a></li>
+          <li><a href="#cfp">Call for Papers</a></li>
+          <li><a href="#editorial">Editorial Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
 
-<nav>
-    <a href="#about">About WSR</a>
-    <a href="#issue1">Issue 1 (2024–25)</a>
-    <a href="#submissions">Call for Papers</a>
-    <a href="#team">Editorial Team</a>
-    <a href="#contact">Contact</a>
-</nav>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-logo">
+        <!-- Make sure logo.jpg exists in the same folder -->
+        <img src="logo.jpg" alt="Weekly Strategic Roundtable Logo">
+      </div>
+      <div class="hero-text">
+        <h1>Weekly Strategic Roundtable (WSR)</h1>
+        <p class="hero-sub">
+          A student-led initiative hosting weekly discussions and research-oriented publications on defence,
+          security and strategic affairs.
+        </p>
+        <p class="hero-meta">
+          <strong>Format:</strong> Research & Journal E-Magazine •
+          <strong>Frequency:</strong> Weekly sessions, curated issues<br>
+          <strong>Launched:</strong> 24 August 2024 (First WSR session) &nbsp;|&nbsp;
+          <strong>First E-Magazine:</strong> Volume 1, Issue 1 (2024–25)
+        </p>
+      </div>
+    </div>
+  </section>
 
-<main>
-    <section id="about">
-        <h2>About WSR</h2>
-        <p>
-            The Weekly Strategic Roundtable (WSR) is a research-oriented discussion forum focusing on defence,
-            security and strategic studies. Launched on <strong> 12 August 2024</strong>, WSR brings together
-            students, researchers and practitioners to examine contemporary geopolitical developments
-            through an academic lens.
-        </p>
-        <p>
-            This website hosts our <strong>first E-Magazine</strong>, featuring curated articles, session reports
-            and reflections emerging from our weekly deliberations.
-        </p>
-    </section>
+  <!-- About Section -->
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">About WSR</h2>
+      <div class="two-col">
+        <div>
+          <p>
+            The <strong>Weekly Strategic Roundtable (WSR)</strong> is a research-oriented discussion forum
+            focusing on defence, security and strategic studies. WSR aims to bring together students,
+            researchers and practitioners to examine contemporary geopolitical developments through an
+            academic lens.
+          </p>
+          <p>
+            Through weekly sessions and curated issues, WSR encourages analytical writing, evidence-based
+            arguments and informed debate on themes affecting India and the wider world.
+          </p>
+        </div>
+        <div class="muted">
+          <p><strong>What this e-magazine hosts:</strong></p>
+          <ul class="clean-list">
+            <li>Curated articles emerging from WSR discussions</li>
+            <li>Session reports and brief analytical notes</li>
+            <li>Commentaries on current defence and geopolitical developments</li>
+            <li>Special issues on selected strategic themes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="issue1">
-        <h2>Current Issue – E-Magazine 1</h2>
-        <p class="meta">Volume 1 • Issue 1 • 2024–25</p>
-        <p>
-            Here you can briefly describe the theme of your first issue. Example:
-            “Geopolitical Instability in South Asia: Survival Dilemmas for Small States”.
-        </p>
-        <p>
-            Later, you can add:
-            <ul>
-                <li>PDF link to the full e-magazine</li>
-                <li>Individual articles with titles and authors</li>
-                <li>Session summaries from WSR meetings</li>
-            </ul>
-        </p>
-    </section>
+  <!-- Current Issue Section -->
+  <section id="issue">
+    <div class="container">
+      <h2 class="section-title">Current Issue – E-Magazine 1</h2>
+      <p class="issue-meta">
+        <strong>Volume 1 | Issue 1 | 2024–25</strong>
+      </p>
 
-    <section id="submissions">
-        <h2>Call for Papers</h2>
+      <div class="issue-card">
+        <h3>Theme (example): Geopolitical Instability in South Asia – Survival Dilemmas for Small States</h3>
         <p>
-            Add your submission guidelines here: word limit, referencing style, themes,
-            email for submission, and review process.
+          This inaugural issue explores how evolving power balances, competing regional visions and
+          emerging security challenges shape the choices of smaller South Asian states. It brings
+          together reflections from WSR sessions, student commentaries and short analytical essays.
         </p>
-    </section>
 
-    <section id="team">
-        <h2>Editorial & Coordination Team</h2>
-        <p>
-            List faculty coordinators, student editors, rapporteurs, and other contributors.
+        <p class="muted" style="margin-top:0.7rem;">
+          Later you can add:
         </p>
-    </section>
+        <ul class="clean-list">
+          <li>PDF link to the full e-magazine</li>
+          <li>Individual articles with titles, authors and abstracts</li>
+          <li>Session summaries from key WSR discussions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact">
-        <h2>Contact</h2>
-        <p>
-            For queries and submissions, write to:
-            <br>
-            <strong>wsr.strategiaonline@gmail.com</strong> (example – use your real email)
+  <!-- Call for Papers -->
+  <section id="cfp">
+    <div class="container">
+      <h2 class="section-title">Call for Papers</h2>
+      <div class="two-col">
+        <div>
+          <p>
+            WSR invites contributions from students, early-career researchers and practitioners interested
+            in defence, security, foreign policy and strategic affairs. Submissions may include:
+          </p>
+          <ul class="clean-list">
+            <li>Short research articles (1,500–3,000 words)</li>
+            <li>Policy briefs and analytical notes (800–1,200 words)</li>
+            <li>Session reports and commentary pieces (600–1,000 words)</li>
+          </ul>
+        </div>
+        <div class="muted">
+          <p><strong>Basic submission guidelines (you can edit later):</strong></p>
+          <ul class="clean-list">
+            <li>Use a clear academic style with proper citations</li>
+            <li>Follow a consistent referencing format (e.g., Chicago/APA)</li>
+            <li>Submit in Word or PDF format</li>
+            <li>Send your work to: <strong>wsr.strategiaonline@gmail.com</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Team -->
+  <section id="editorial">
+    <div class="container">
+      <h2 class="section-title">Editorial & Coordination Team</h2>
+      <p class="muted">
+        (Fill in names and roles as you finalise your team.)
+      </p>
+      <ul class="clean-list" style="margin-top:0.7rem;">
+        <li><strong>Faculty Coordinator:</strong> …</li>
+        <li><strong>Student Editors:</strong> …</li>
+        <li><strong>Rapporteurs & Contributors:</strong> …</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <p class="muted">For queries, submissions and collaborations, reach out to us:</p>
+      <div style="margin-top:0.7rem;">
+        <p class="contact-item">
+          📧 <strong>Email:</strong> <a href="mailto:wsr.strategiaonline@gmail.com">wsr.strategiaonline@gmail.com</a>
         </p>
-    </section>
-</main>
+        <p class="contact-item">
+          🌐 <strong>Website:</strong> <a href="https://strategiaonline.in">https://strategiaonline.in</a>
+        </p>
+        <p class="contact-item muted">
+          (You can add social media links here later – e.g., LinkedIn, X, Instagram.)
+        </p>
+      </div>
+    </div>
+  </section>
 
-<footer>
+  <footer>
     © <span id="year"></span> Weekly Strategic Roundtable (WSR). All rights reserved.
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-</footer>
+  </footer>
 
+  <script>
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
